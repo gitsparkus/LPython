@@ -16,7 +16,7 @@ companies = {
 
 
 def my_func(companies_dict: dict) -> bool:
-    for k, v in companies_dict.items():
+    for v in companies_dict.values():
         if sum(v) < 0:
             return False
 
