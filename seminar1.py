@@ -24,3 +24,6 @@ if __name__ == '__main__':
     add_result('Третья загадка', 4)
 
     print_result()
+
+
+
