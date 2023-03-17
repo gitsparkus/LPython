@@ -77,7 +77,6 @@ def generate_csv(path: Path):
             a = randint(-1000, 1000)
             b = randint(-1000, 1000)
             c = randint(-1000, 1000)
-            # print(a, b, c)
             writer.writerow([a, b, c])
 
 
