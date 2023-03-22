@@ -16,6 +16,12 @@ class MyStr(str):
         instance.time = time()
         return instance
 
+    def __str__(self):
+        return f'Строка: {super().__str__()}\nАвтор: {self.author}'
+
+    def __repr__(self):
+        return f'{type(self).__name__}("{self}", "{self.author}")'
+
 
 class Archive:  # noqa
     """Класс, сохраняющий архив старых значений при создании новых экземпляров."""
@@ -35,6 +41,12 @@ class Archive:  # noqa
     def __init__(self, count, text):
         self.count = count
         self.text = text
+
+    def __str__(self):
+        return f'Число: {self.count}, Строка: {self.text}'
+
+    def __repr__(self):
+        return f'{type(self).__name__}({self.count}, "{self.text}")'
 
 
 if __name__ == '__main__':

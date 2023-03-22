@@ -38,6 +38,12 @@ class Rectangle:
         new_length = new_perimeter / 2 - new_width
         return Rectangle(new_width, new_length)
 
+    def __str__(self):
+        return f"Длина: {self.length}\nШирина: {self.width} "
+
+    def __repr__(self):
+        return f'{type(self).__name__}({self.length}, {self.width})'
+
 
 if __name__ == '__main__':
     r1 = Rectangle(2)
@@ -49,3 +55,6 @@ if __name__ == '__main__':
     print(f'{r3 = }')
     print(r3.perimeter())
     print(r3.width, r3.length)
+
+    print(f'{r3}')
+    print(f'{r3=}')

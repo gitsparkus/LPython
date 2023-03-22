@@ -32,10 +32,11 @@ class Archive:
                f"value archive: {c}, text archive: {t}"
 
     def __repr__(self):
-        return f"Archive({self.instance.count}, '{self.instance.text}')"
+        return f'{type(self).__name__}({self.count}, "{self.text}")'
 
 
 if __name__ == '__main__':
     d1 = Archive(1, 'a')
     print(d1.text, d1.texts)
     print(f'{d1}')
+    print(f'{d1=}')

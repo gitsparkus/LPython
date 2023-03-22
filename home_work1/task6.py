@@ -48,6 +48,12 @@ class Rectangle:
     def __le__(self, other):
         return self.area() <= other.area()
 
+    def __str__(self):
+        return f"Длина: {self.length}\nШирина: {self.width} "
+
+    def __repr__(self):
+        return f'{type(self).__name__}({self.length}, {self.width})'
+
 
 if __name__ == '__main__':
     r1 = Rectangle(4, 12)

@@ -27,6 +27,12 @@ class Archive:
         self.count = count
         self.text = text
 
+    def __str__(self):
+        return f'Число: {self.count}, Строка: {self.text}'
+
+    def __repr__(self):
+        return f'{type(self).__name__}({self.count}, "{self.text}")'
+
 
 if __name__ == '__main__':
     d1 = Archive(1, 'a')
@@ -35,3 +41,6 @@ if __name__ == '__main__':
     print(d2.text, d2.text_archive)
     d3 = Archive(3, 'c')
     print(d3.text, d3.text_archive)
+
+    print(f'{d3=}')
+    print(f'{d3}')

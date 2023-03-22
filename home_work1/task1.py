@@ -18,7 +18,14 @@ class MyStr(str):
         instance.time = time()
         return instance
 
+    def __str__(self):
+        return f'Строка: {super().__str__()}\nАвтор: {self.author}'
+
+    def __repr__(self):
+        return f'{type(self).__name__}("{self}", "{self.author}")'
+
 
 if __name__ == '__main__':
     s = MyStr('Hello world!', 'student')
     print(s)
+    print(f'{s=}')
