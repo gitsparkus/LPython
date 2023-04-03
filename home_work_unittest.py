@@ -7,6 +7,8 @@ unittest,
 pytest.
 """
 
+import unittest
+
 
 class MatrixSizeError(Exception):
 
@@ -19,9 +21,7 @@ class MatrixSizeError(Exception):
 
 
 class Matrix:
-    """
-    >>> Matrix
-    """
+
     def __init__(self, list_of_lists):
         if isinstance(list_of_lists, list) and sum({isinstance(x, list) for x in list_of_lists}):
             if len({len(x) for x in list_of_lists}) == 1:
@@ -44,6 +44,18 @@ class Matrix:
         return str(self) == str(other)
 
 
+class TestMatrixMethods(unittest.TestCase):
+
+    def test_equal(self):
+        self.assertEqual(Matrix([[1, 3]]), Matrix([[1, 3]]))
+
+    def test_size(self):
+        with self.assertRaises(ValueError):
+            Matrix([[5, 6], [7]])
+
+    def test_str(self):
+        self.assertEqual(str(Matrix([[4, 6], [7, 1]])), '4  6\n7  1')
+
+
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+    unittest.main(verbosity=True)
