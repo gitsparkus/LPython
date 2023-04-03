@@ -6,3 +6,44 @@ doctest,
 unittest,
 pytest.
 """
+
+
+class MatrixSizeError(Exception):
+
+    def __init__(self, value1, value2):
+        self.value1 = value1
+        self.value2 = value2
+
+    def __str__(self):
+        return f"Размеры матриц должны быть одинаковыми! Переданы матрицы с размерами {self.value1} и {self.value2}"
+
+
+class Matrix:
+    """
+    >>> Matrix
+    """
+    def __init__(self, list_of_lists):
+        if isinstance(list_of_lists, list) and sum({isinstance(x, list) for x in list_of_lists}):
+            if len({len(x) for x in list_of_lists}) == 1:
+                self.__matrix = list_of_lists
+            else:
+                raise ValueError("Размеры списков должны быть одинаковыми!")
+        else:
+            raise ValueError("Матрица должны быть списком списков")
+
+    def __str__(self):
+        return '\n'.join(['  '.join(map(str, x)) for x in self.__matrix])
+
+    def __add__(self, other):
+        if len(self.__matrix) != len(other.__matrix):
+            raise MatrixSizeError(len(self.__matrix), len(other.__matrix))
+        return Matrix(
+            [list(map(lambda x, y: x + y, self.__matrix[i], other.__matrix[i])) for i in range(len(self.__matrix))])
+
+    def __eq__(self, other):
+        return str(self) == str(other)
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
